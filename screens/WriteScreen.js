@@ -1,6 +1,6 @@
 
     import React from 'react';
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, KeyBoardAvoidingView,ToastAndroid,Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import db from '../config';
 import firebase from 'firebase';
@@ -26,16 +26,17 @@ export default class WriteStoryScreen extends React.Component {
             author: '',
             summary: ''
         })
+        return Alert.alert('Story Submitted Successfully');
     }
 
     render() {
         return (
-            
+            <KeyBoardAvoidingView>
             <View>
                 <Text style={{ textAlign: 'center', backgroundColor: "pink", paddingBottom: 20, paddingTop: 20 }}>Story Hub</Text>
                 <TextInput
                     style={styles.textInput1}
-                    placeholder={"Story Name"}
+                    placeholder="Story Name"
                     onChangeText={(text) => {
                         this.setState({
                             title: text
@@ -53,7 +54,7 @@ export default class WriteStoryScreen extends React.Component {
                     value={this.state.author} />
                 <TextInput
                     style={styles.storyView}
-                    placeholder={"Summary"}
+                    placeholder="Summary"
                     onChangeText={(text) => {
                         this.setState({
                             summary: text
@@ -65,7 +66,7 @@ export default class WriteStoryScreen extends React.Component {
                 </TouchableOpacity>
                 
             </View>
-                
+                </KeyBoardAvoidingView>
         )
     }
 }
